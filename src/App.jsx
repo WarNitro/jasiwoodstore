@@ -14,13 +14,13 @@ function App() {
     return (
         <Routes>
             <Route element={<Layout />}>
-                <Route path="/" element={<Home />} />
-                <Route path="/productos" element={<Productos />} />
-                <Route path="/producto-detalle/:id" element={<ProductoDetalle />} />
-                <Route path="/contacto" element={<Contacto />} />
-                <Route path="/carrito" element={<Home />} />
-                <Route path="/admin" element={<Admin />} />
-                <Route path="/admin/producto-tarjeta/:id" element={<ProductoTarjeta />} />
+                <Route path="/jasiwoodstore/" element={<Home />} />
+                <Route path="/jasiwoodstore/productos" element={<Productos />} />
+                <Route path="/jasiwoodstore/producto-detalle/:id" element={<ProductoDetalle />} />
+                <Route path="/jasiwoodstore/contacto" element={<Contacto />} />
+                <Route path="/jasiwoodstore/carrito" element={<Home />} />
+                <Route path="/jasiwoodstore/admin" element={<Admin />} />
+                <Route path="/jasiwoodstore/admin/producto-tarjeta/:id" element={<ProductoTarjeta />} />
             </Route>
         </Routes>
     )
