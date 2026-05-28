@@ -1,0 +1,29 @@
+//import './App.css'
+import Home from './components/Home/Home.jsx'
+import Layout from "./components/Layout/Layout.jsx"
+import Productos from "./components/Productos/Productos.jsx"
+import ProductoDetalle from "./components/Productos/ProductoDetalle/ProductoDetalle.jsx"
+import Contacto from "./components/Contacto/Contacto.jsx"
+import Admin from "./components/Admin/Admin.jsx"
+import ProductoTarjeta from "./components/Productos/ProductoTarjeta/ProductoTarjeta.jsx"
+
+import { Routes, Route } from "react-router-dom"
+
+function App() {
+
+    return (
+        <Routes>
+            <Route element={<Layout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/productos" element={<Productos />} />
+                <Route path="/producto-detalle/:id" element={<ProductoDetalle />} />
+                <Route path="/contacto" element={<Contacto />} />
+                <Route path="/carrito" element={<Home />} />
+                <Route path="/admin" element={<Admin />} />
+                <Route path="/admin/producto-tarjeta/:id" element={<ProductoTarjeta />} />
+            </Route>
+        </Routes>
+    )
+}
+
+export default App

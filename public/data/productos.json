@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "nombre": "Chipá (por kilo)", 
+        "precio": "2999", 
+        "stock": 5, 
+        "imagen": "/img/chipa.png",
+        "descripcion": "Chipa de mandioca libre de gluten."
+    },
+    {
+        "id": 2,
+        "nombre": "Media docena de facturas surtidas", 
+        "precio": "5999", 
+        "stock": 3, 
+        "imagen": "/img/facturas.png",
+        "descripcion": "Surtido de facturas del día. Sujeto a disponibilidad."
+    },
+    {
+        "id": 3,
+        "nombre": "Pastafrola (por kilo)", 
+        "precio": "12000", 
+        "stock": 9, 
+        "imagen": "/img/pastafrola.jpg",
+        "descripcion": "Pastafrola de Membrillo con coco rallado."
+    },
+    {
+        "id": 4,
+        "nombre": "Brownie (por kilo)", 
+        "precio": "19500", 
+        "stock": 15, 
+        "imagen": "/img/brownie.png",
+        "descripcion": "Brownie con autentico chocolate 70% cacao."
+    },
+    {
+        "id": 5,
+        "nombre": "Torta Rogel (por kilo)", 
+        "precio": "14999", 
+        "stock": 5, 
+        "imagen": "/img/rogel.png",
+        "descripcion": "Torta mil hojas con dulce de leche."
+    }
+]
