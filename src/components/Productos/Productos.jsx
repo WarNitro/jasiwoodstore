@@ -40,8 +40,11 @@ function Productos() {
 
   return (
     <>
-        <h2>Productos</h2>
-        <ProductoLista productos={ productos } />
+        <h2 className="text-center mt-4 mb-3">Productos</h2>
+
+        <div className="container mt-3">
+          <ProductoLista productos={ productos } />
+        </div>
     </>
   )
 }

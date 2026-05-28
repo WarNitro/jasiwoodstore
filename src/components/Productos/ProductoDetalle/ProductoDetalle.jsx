@@ -44,9 +44,9 @@ function ProductoDetalle() {
     }
 
     return (
-        <div>
+        <div className="">
             <h2>{ producto.nombre }</h2>
-            <img src={ producto.imagen } alt={ producto.nombre } width="200" height="200" />
+            <img src={ producto.imagen } alt={ producto.nombre } className="img-fluid" />
             <p>Precio: ${ producto.precio }</p>
             <p>Stock: { producto.stock }</p>
             <p>{ producto.descripcion }</p>

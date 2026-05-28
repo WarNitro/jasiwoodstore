@@ -1,26 +1,33 @@
 import styles from "./Producto.module.css"
 import { Link } from "react-router-dom"
 
-function Producto({ admin, id, nombre, imagen, precio, stock }) {
+function Producto({ admin, id, nombre, imagen, precio, descripcion, stock }) {
 
     if (admin) {
         return (
-            <div className={styles.producto}>
-                <h3>{ nombre }</h3>
-                <img src={ imagen } alt={ nombre } width="100" height="100" />
-                <p>Precio: ${ precio }</p>
-                <Link to={ `/jasiwoodstore/admin/producto-tarjeta/${ id }` }>Editar</Link>
+            <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center m-3 p-3 card shadow-lg" style={{ minHeight: "500px" }}>
+                <img src={ imagen } alt={ nombre } className="card-img-top" style={{ height: "200px" }} />
+                <div className="card-body">
+                    <h3 className="card-title">{ nombre }</h3>
+                    <p className="card-subtitle mb-2 text-body-secondary">Precio: ${ precio }<br />
+                    Stock: { stock }</p>
+                    <p className="card-text">{ descripcion }</p>
+                    <Link to={ `/jasiwoodstore/admin/producto-tarjeta/${ id }` } className="btn btn-primary">Editar</Link>
+                </div>
             </div>
         )
     }
     else {
         return (
-            <div className={styles.producto}>
-                <h3>{ nombre }</h3>
-                <img src={ imagen } alt={ nombre } width="100" height="100" />
-                <p>Precio: ${ precio }</p>
-                <p>Stock: { stock }</p>
-                <Link to={ `/jasiwoodstore/producto-detalle/${ id }` }>Detalles</Link>
+            <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12 text-center m-3 p-3 card shadow-lg" style={{ minHeight: "500px" }}>
+                <img src={ imagen } alt={ nombre } className="card-img-top" style={{ height: "200px" }} />
+                <div className="card-body">
+                    <h3 className="card-title">{ nombre }</h3>
+                    <p className="card-subtitle mb-2 text-body-secondary">Precio: ${ precio }<br />
+                    Stock: { stock }</p>
+                    <p className="card-text">{ descripcion }</p>
+                    <Link to={ `/jasiwoodstore/producto-detalle/${ id }` } className="btn btn-primary">Detalles</Link>
+                </div>
             </div>
         )
     }
