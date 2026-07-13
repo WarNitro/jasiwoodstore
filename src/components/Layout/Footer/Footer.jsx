@@ -1,6 +1,8 @@
-import styles from './Footer.module.css'
-import MiembroLista from '../../Miembro/MiembroLista/MiembroLista.jsx'
+//import styles from './Footer.module.css'
 import { useState, useEffect } from 'react';
+
+import MiembroLista from '../../Miembro/MiembroLista/MiembroLista'
+
 
 function Footer() {
 
@@ -25,11 +27,11 @@ function Footer() {
       setCargando(false);
     });
   }, 
-  []
+    []
   );
 
     return (
-        <footer className="m-0 p-3" container>
+        <footer className="m-0 p-3 container">
             <div className="row">
                 <div className="col">
                     <MiembroLista equipo={equipo} />

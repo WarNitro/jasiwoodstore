@@ -9,8 +9,12 @@ function Layout() {
     <>
         <Header />
         <Nav />
-        <main className="p-4" style={{ backgroundImage: "url(/jasiwoodstore/img/background.jpg)", backgroundSize: 'cover', backgroundPosition: "center", minHeight: '100vh'  }}>
-            <Outlet />
+        <main style={{ backgroundImage: "url(/jasiwoodstore/img/background.jpg)", backgroundSize: 'cover', backgroundPosition: "center", minHeight: '100vh'  }}>
+            <div className="container">
+              <div className="p-4 row justify-content-center align-items-center">
+                <Outlet />
+              </div>
+            </div>
         </main>
         <Footer />
     </>

@@ -1,10 +1,10 @@
 import styles from "./ProductoLista.module.css"
-import Producto from '../Producto/Producto.jsx'
+import Producto from '../Producto/Producto'
 
 function ProductoLista({ admin, productos }) {
 
     return (
-        <div className="row align-items-start">
+        <div className="row justify-content-center align-items-center">
             {
                 productos.map((producto, key) => (
                     <Producto key={key} admin={admin} {...producto} />

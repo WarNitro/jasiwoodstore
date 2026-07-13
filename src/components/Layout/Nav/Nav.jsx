@@ -1,7 +1,14 @@
-import styles from './Nav.module.css'
+//import styles from './Nav.module.css'
 import { Link } from "react-router-dom"
+import { useCarrito } from '../../../context/CarritoContext';
+import { useAuth } from '../../../context/AuthContext';
 
 function Nav() {
+
+    const { cantidadTotalCarrito } = useCarrito();
+    const totalItems = cantidadTotalCarrito();
+
+    const { user, logout } = useAuth();
 
     return (
         <nav className="navbar navbar-expand-md bg-body-tertiary m-0">
@@ -23,11 +30,34 @@ function Nav() {
                             <Link to="/jasiwoodstore/contacto" className="nav-link disabled" aria-disabled="true">Contacto</Link>
                         </li>
                         <li className="nav-item m-2">
+                            <Link to="/jasiwoodstore/carrito" className="nav-link">Carrito{ totalItems > 0 && <span> ({totalItems})</span> }</Link>
+                        </li>
+
+
+
+                {user ? (
+                    <>
+                    {(user.rol === 'admin' || user.rol === 'dataentry') && (
+                        <li className="nav-item m-2">
                             <Link to="/jasiwoodstore/admin" className="nav-link">Admin</Link>
                         </li>
+                    )}
                         <li className="nav-item m-2">
-                            <Link to="/jasiwoodstore/carrito" className="nav-link disabled" aria-disabled="true">Carrito</Link>
+                            <span>{user.email} <a href="" onClick={ logout }>(Logout)</a></span>
                         </li>
+                    </>
+                )
+                : 
+                (
+                    <>
+                        <li className="nav-item m-2">
+                            <Link to="/jasiwoodstore/login" className="nav-link">Entrar</Link>
+                        </li>
+                        <li className="nav-item m-2">
+                            <Link to="/jasiwoodstore/registro" className="nav-link">Registrarse</Link>
+                        </li>
+                    </>
+                )}
                     </ul>
                 </div>
             </div>
