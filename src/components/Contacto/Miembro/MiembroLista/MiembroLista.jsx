@@ -1,9 +1,9 @@
 import Miembro from '../Miembro/Miembro.jsx'
 
-function EquipoLista({ equipo }) {
+function MiembroLista({ equipo }) {
 
     return (
-        <div className="row">
+        <div className="row row-cols-8 g-3 justify-content-center">
         {
             equipo.map((miembro, key) => (
                 <Miembro key={key} {...miembro} />
@@ -13,4 +13,4 @@ function EquipoLista({ equipo }) {
     )
 }
 
-export default EquipoLista
+export default MiembroLista

@@ -50,7 +50,7 @@ function Producto({ id, nombre, imagen, precio, descripcion, stock, unidad, cate
                         <button onClick={ handleAgregarCarrito } disabled={cantidad == 0} className="btn btn-primary ms-1">Agregar</button>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div className="card-footer">
                     <small>({ cantidadActual } actualmente en carrito)</small>
                 </div>
             </div>

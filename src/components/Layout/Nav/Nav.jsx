@@ -27,7 +27,7 @@ function Nav() {
                             <Link to="/jasiwoodstore/productos" className="nav-link">Productos</Link>
                         </li>
                         <li className="nav-item m-2">
-                            <Link to="/jasiwoodstore/contacto" className="nav-link disabled" aria-disabled="true">Contacto</Link>
+                            <Link to="/jasiwoodstore/contacto" className="nav-link">Quienes Somos</Link>
                         </li>
                         <li className="nav-item m-2">
                             <Link to="/jasiwoodstore/carrito" className="nav-link">Carrito{ totalItems > 0 && <span> ({totalItems})</span> }</Link>
