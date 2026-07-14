@@ -34,6 +34,9 @@ export function FormularioProducto({ producto, manejarCambio, manejarEnvio }) {
             </div>
             <div>
                 <label>Imagen:</label>
+            {producto.imagen != '' && (
+                <img src={ producto.imagen } alt={ producto.nombre } width="100" height="100" />
+            )}
                 <input type="file" placeholder="https://…" name="imagenNueva" onChange={manejarCambio} />
             </div>
             <div>
