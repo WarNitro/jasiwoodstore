@@ -32,23 +32,27 @@ function Producto({ id, nombre, imagen, precio, descripcion, stock, unidad, cate
 
     
     return (
-        <div className="col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-8 col-xxs-12 text-center m-3 p-3 card shadow-lg" style={{ minHeight: "500px" }}>
-            <Link to={ `/jasiwoodstore/producto-detalle/${ id }` }>
-                <img src={ imagen } alt={ nombre } className="card-img-top" style={{ height: "200px" }} />
-            </Link>
-            <div className="card-body">
-                <h3 className="card-title">{ nombre }</h3>
-                <p className="card-subtitle mb-2 text-body-secondary">Unidad: { unidad }</p>
-                <p className="card-subtitle mb-2 text-body-secondary">Precio: ${ precio }</p>
-                <p className="card-subtitle mb-2 text-body-secondary">Stock: { stock }</p>
-                <p className="card-text">{ descripcion }</p>
-                <div>
-                    <button onClick={decrementar} className="btn btn-primary">-</button>
-                    <span style={{ margin: '0 10px' }}>{cantidad}</span>
-                    <button onClick={incrementar} className="btn btn-primary">+</button>
-                    <button onClick={ handleAgregarCarrito } disabled={cantidad == 0} className="btn btn-primary ms-1">Agregar</button>
+        <div className="col">
+            <div className="card text-center shadow-lg h-100">
+                <Link to={ `/jasiwoodstore/producto-detalle/${ id }` }>
+                    <img src={ imagen } alt={ nombre } className="card-img-top" style={{ height: "200px" }} />
+                </Link>
+                <div className="card-body p-3">
+                    <h3 className="card-title">{ nombre }</h3>
+                    <p className="card-text">Unidad: { unidad }</p>
+                    <p className="card-text">Precio: ${ precio }</p>
+                    <p className="card-text">Stock: { stock }</p>
+                    <p className="card-text">{ descripcion }</p>
+                    <div>
+                        <button onClick={decrementar} className="btn btn-primary">-</button>
+                        <span className="mx-2">{cantidad}</span>
+                        <button onClick={incrementar} className="btn btn-primary">+</button>
+                        <button onClick={ handleAgregarCarrito } disabled={cantidad == 0} className="btn btn-primary ms-1">Agregar</button>
+                    </div>
                 </div>
-                <p>({ cantidadActual } actualmente en carrito)</p>
+                <div class="card-footer">
+                    <small>({ cantidadActual } actualmente en carrito)</small>
+                </div>
             </div>
         </div>
     )

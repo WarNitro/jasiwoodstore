@@ -43,22 +43,22 @@ function Carrito() {
             <h2 className="text-center">Carrito</h2>
             { 
                 carrito.map(producto => (
-                    <div className="col-md-12 card shadow-lg my-2" key={ producto.id }>
+                    <div className="card shadow-lg p-0 my-1" key={ producto.id }>
                         <div className="row g-0">
-                            <div className="col-md-4">
-                                <img src={ producto.imagen } alt={ producto.nombre } className="img-fluid rounded-start" style={{ height: "200px" }} />
+                            <div className="col-2">
+                                <img src={ producto.imagen } alt={ producto.nombre } className="img-fluid rounded-start w-100" style={{ height: "200px" }} />
                             </div>
-                            <div className="col-md-8">
-                                <h4>{ producto.nombre }</h4>
+                            <div className="col-10 p-2">
+                                <h4 className="card-title">{ producto.nombre }</h4>
                                 <div>
                                     <button onClick={ () => handlerDecrementar(producto) } className="btn btn-primary">-</button>
-                                    <span style={{ margin: '0 10px' }}>{ producto.cantidad }</span>
+                                    <span className="mx-2">{ producto.cantidad }</span>
                                     <button onClick={ () => handlerIncrementar(producto) } className="btn btn-primary">+</button>
                                     <button onClick={ () => handlerQuitarItem(producto) } className="btn btn-primary ms-1">Quitar Producto</button>
                                 </div>
-                                <p>Cantidad: { producto.cantidad } / Stock: { producto.stock }</p>
-                                <p>Precio unitario: ${ producto.precio }</p>
-                                <p>Subtotal: ${ producto.precio * producto.cantidad }</p>
+                                <p className="card-text">Cantidad: { producto.cantidad } / Stock: { producto.stock }</p>
+                                <p className="card-text">Precio unitario: ${ producto.precio }</p>
+                                <p className="card-text">Subtotal: ${ producto.precio * producto.cantidad }</p>
                             </div>
                         </div>
                     </div>

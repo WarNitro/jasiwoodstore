@@ -65,21 +65,23 @@ export function Admin() {
             <h2 className="text-center">Administración del Sitio</h2>
             
             <h3 className="text-center">Lista de Productos</h3>
-            <div><button onClick={ () => navigate('/jasiwoodstore/admin/editar-producto') } className="btn btn-primary">Nuevo Producto</button></div>
+            <div className="row my-1 p-0">
+                <button onClick={ () => navigate('/jasiwoodstore/admin/editar-producto') } className="btn btn-primary">Nuevo Producto</button>
+            </div>
 
         {productos.map((producto) => (
-            <div className="card shadow-lg my-1" key={producto.id}>
+            <div className="card shadow-lg p-0 my-1" key={producto.id}>
                 <div className="row g-0">
-                    <div className="col-md-2">
-                        <img src={ producto.imagen=='' ? '/jasiwoodstore/img/sample.png' : producto.imagen } alt={ producto.nombre } className="img-fluid rounded-start" style={{ height: "100px" }} />
+                    <div className="col-2">
+                        <img src={ producto.imagen=='' ? '/jasiwoodstore/img/sample.png' : producto.imagen } alt={ producto.nombre } className="img-fluid rounded-start w-100" style={{height: "120px"}} />
                     </div>
-                    <div className="col-md-10">
-                        <h4>{producto.nombre}</h4>
-                        <p>${producto.precio}</p>
-                        <div>
-                            <button onClick={() => navigate(`/jasiwoodstore/admin/editar-producto/${ producto.id }`)} className="btn btn-primary">Editar</button>
-                            <button onClick={() => handleDelete(producto.id)} className="btn btn-primary ms-1">Eliminar</button>
-                        </div>
+                    <div className="col-8 p-2">
+                        <h4 className="card-title">{producto.nombre}</h4>
+                        <span className="card-text">Precio: ${producto.precio} - Unidad: {producto.unidad} - Stock: {producto.stock} - Destacado: {producto.destacado}</span>
+                    </div>
+                    <div className="col-2 p-2">
+                        <button onClick={() => navigate(`/jasiwoodstore/admin/editar-producto/${ producto.id }`)} className="btn btn-primary w-100 m-1">Editar</button>
+                        <button onClick={() => handleDelete(producto.id)} className="btn btn-primary w-100 m-1">Eliminar</button>
                     </div>
                 </div>
             </div>
