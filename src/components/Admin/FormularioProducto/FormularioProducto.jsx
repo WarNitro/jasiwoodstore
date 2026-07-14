@@ -34,11 +34,11 @@ export function FormularioProducto({ producto, manejarCambio, manejarEnvio }) {
             </div>
             <div>
                 <label>Imagen:</label>
-                <input type="file" placeholder="https://…" name="imagenNueva" accept="image/png, image/jpeg" onChange={manejarCambio} />
+                <input type="file" placeholder="https://…" name="imagenNueva" onChange={manejarCambio} />
             </div>
             <div>
                 <label>Destacado:</label>
-                <input type="checkbox" name="destacado" value={producto.destacado} onChange={manejarCambio} />
+                <input type="checkbox" name="destacado" defaultChecked={ producto.destacado } onChange={manejarCambio} />
             </div>
             <div>
                 <label>Descripcion:</label>

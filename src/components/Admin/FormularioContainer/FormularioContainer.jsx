@@ -19,7 +19,8 @@ function FormularioContainer() {
         stock: 0,
         imagen: '',
         descripcion: '',
-        destacado: false
+        destacado: false,
+        unidad: ''
     };
 
     const [producto, setProducto] = useState(estadoInicialForm);

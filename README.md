@@ -1,16 +1,16 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# PASOS PARA CORRER LA APP:
+1- Tener instalado node js y git
+2- Bajar el codigo del repoistorio
+3- Correr el comando "npm install" en el directorio raiz del proyecto para bajar los modulos
+4- Ejecutar en servidor local de desarrollo con "npm run dev"
 
-Currently, two official plugins are available:
+# USUARIOS DE PRUEBA DE LA APP
+Al registrar un usuario este se agrega con el permiso de rol mas basico: user
+Ya estan creadas estas otras alternativas:
+ - ADMIN: admin@jasiwood.com.ar / admin1234
+ - USUARIO: test@user.com / test1234
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# BASE DE DATOS
+La base de datos es una firebase, con una coleccion de productos y otra de roles para levantar a los usuarios con diferente rol a "user" (puede ser "admin" o "dataentry").
