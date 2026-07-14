@@ -1,18 +1,5 @@
-.nav {
-    background-color: #5b48c4;
-    padding: 10px;
-    text-align: center;
-    color: white;
-}
 
-.nav ul {
-    display: flex; 
-    list-style-type: none; 
-    padding: 0px;
-}
-
-.nav ul li {
-    margin-right: 20px;
-    margin-left: 20px;
-    color: white;
+.navbar-nav .nav-link:hover {
+    background-color: #f8f9fa; /* Light grey background */
+    color: #0d6efd; /* Changes text color to Bootstrap blue */
 }

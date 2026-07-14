@@ -19,7 +19,7 @@ function Login() {
             const user = userCredential.user;
             console.log("Usuario logueado:", user);
 
-            navigate('/jasiwoodstore/admin');
+            navigate('/jasiwoodstore/');
         })
         .catch((error) => {
             console.error("Error en el login:", error.code, error.message);

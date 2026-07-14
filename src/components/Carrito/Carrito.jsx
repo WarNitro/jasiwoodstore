@@ -22,7 +22,6 @@ function Carrito() {
         }
     };
 
-    
     if (carrito.length === 0) {
         return (
             <>
@@ -31,6 +30,11 @@ function Carrito() {
                 <p className="text-center">Agrega productos para continuar la compra.</p>
             </>
         );
+    }
+
+    const handleComprar = () => {
+        alert("Gracias por comprar");
+        vaciarCarrito();
     }
 
     // Si hay productos, los mostramos
@@ -64,7 +68,7 @@ function Carrito() {
             <h3>Total a pagar: ${ precioTotalCarrito() }</h3>
             <div className="text-end">
                 <button onClick={ vaciarCarrito } className="btn btn-primary">Vaciar Carrito</button>
-                <button onClick={ ()=>alert("Gracias por comprar") } className="btn btn-primary ms-1">Finalizar Compra</button>
+                <button onClick={ handleComprar } className="btn btn-primary ms-1">Finalizar Compra</button>
             </div>
         </>
     );

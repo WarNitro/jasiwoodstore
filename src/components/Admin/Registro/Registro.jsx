@@ -50,7 +50,7 @@ function Registro() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>Correo Electrónico</label>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="persona@ejemplo.com" />
                 </div>
                 <div className="form-group">
                     <label>Contraseña</label>

@@ -18,7 +18,7 @@ function Nav() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center">
+                    <ul className="navbar-nav me-auto mb-lg-0 justify-content-center">
                         <li className="nav-item m-2">
                             { /*<a class="nav-link active" aria-current="page" href="#">Home</a>*/ }
                             <Link to="/jasiwoodstore/" className="nav-link">Home</Link>
@@ -33,32 +33,28 @@ function Nav() {
                             <Link to="/jasiwoodstore/carrito" className="nav-link">Carrito{ totalItems > 0 && <span> ({totalItems})</span> }</Link>
                         </li>
 
-
-
-                {user ? (
-                    <>
-                    {(user.rol === 'admin' || user.rol === 'dataentry') && (
+                    {user && (user.rol === 'admin' || user.rol === 'dataentry') ? (
                         <li className="nav-item m-2">
                             <Link to="/jasiwoodstore/admin" className="nav-link">Admin</Link>
                         </li>
-                    )}
-                        <li className="nav-item m-2">
-                            <span>{user.email} <a href="" onClick={ logout }>(Logout)</a></span>
-                        </li>
-                    </>
-                )
-                : 
-                (
-                    <>
+                    )
+                    : 
+                    !user && (
+                        <>
                         <li className="nav-item m-2">
                             <Link to="/jasiwoodstore/login" className="nav-link">Entrar</Link>
                         </li>
                         <li className="nav-item m-2">
                             <Link to="/jasiwoodstore/registro" className="nav-link">Registrarse</Link>
                         </li>
-                    </>
-                )}
+                        </>
+                    )}
                     </ul>
+                {user && (
+                    <div className="navbar-text m-2">
+                        <span>{user.email} <a href="" onClick={ logout }>(Logout)</a></span>
+                    </div>
+                )}
                 </div>
             </div>
         </nav>
