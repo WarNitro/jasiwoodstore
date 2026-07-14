@@ -12,7 +12,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Admin from "./components/Admin/Admin";
 import Login from "./components/Admin/Login/Login";
 import Registro from "./components/Admin/Registro/Registro";
-import ProductoTarjeta from "./components/Productos/ProductoTarjeta/ProductoTarjeta";
+import FormularioContainer from "./components/Admin/FormularioContainer/FormularioContainer";
 
 
 function App() {
@@ -28,7 +28,8 @@ function App() {
                 <Route path="/jasiwoodstore/registro" element={<Registro />} />
                 <Route path="/jasiwoodstore/login" element={<Login />} />
                 <Route path="/jasiwoodstore/admin" element={<ProtectedRoute roles={['admin', 'dataentry']}><Admin /></ProtectedRoute>} />
-                <Route path="/jasiwoodstore/admin/producto-tarjeta/:id" element={<ProductoTarjeta />} />
+                <Route path="/jasiwoodstore/admin/editar-producto" element={<ProtectedRoute roles={['admin', 'dataentry']}><FormularioContainer /></ProtectedRoute>} />
+                <Route path="/jasiwoodstore/admin/editar-producto/:id" element={<ProtectedRoute roles={['admin', 'dataentry']}><FormularioContainer /></ProtectedRoute>} />
             </Route>
         </Routes>
     )
