@@ -12,7 +12,8 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import Admin from "./components/Admin/Admin";
 import Login from "./components/Admin/Login/Login";
 import Registro from "./components/Admin/Registro/Registro";
-import FormularioContainer from "./components/Admin/FormularioContainer/FormularioContainer";
+import FormularioProducto from "./components/Admin/FormularioProducto/FormularioProducto";
+import FormularioCupon from "./components/Admin/FormularioCupon/FormularioCupon";
 
 
 function App() {
@@ -28,8 +29,10 @@ function App() {
                 <Route path="/jasiwoodstore/registro" element={<Registro />} />
                 <Route path="/jasiwoodstore/login" element={<Login />} />
                 <Route path="/jasiwoodstore/admin" element={<ProtectedRoute roles={['admin', 'dataentry']}><Admin /></ProtectedRoute>} />
-                <Route path="/jasiwoodstore/admin/editar-producto" element={<ProtectedRoute roles={['admin', 'dataentry']}><FormularioContainer /></ProtectedRoute>} />
-                <Route path="/jasiwoodstore/admin/editar-producto/:id" element={<ProtectedRoute roles={['admin', 'dataentry']}><FormularioContainer /></ProtectedRoute>} />
+                <Route path="/jasiwoodstore/admin/editar-producto" element={<ProtectedRoute roles={['admin', 'dataentry']}><FormularioProducto /></ProtectedRoute>} />
+                <Route path="/jasiwoodstore/admin/editar-producto/:id" element={<ProtectedRoute roles={['admin', 'dataentry']}><FormularioProducto /></ProtectedRoute>} />
+                <Route path="/jasiwoodstore/admin/editar-cupon" element={<ProtectedRoute roles={['admin', 'dataentry']}><FormularioCupon /></ProtectedRoute>} />
+                <Route path="/jasiwoodstore/admin/editar-cupon/:id" element={<ProtectedRoute roles={['admin', 'dataentry']}><FormularioCupon /></ProtectedRoute>} />
             </Route>
         </Routes>
     )

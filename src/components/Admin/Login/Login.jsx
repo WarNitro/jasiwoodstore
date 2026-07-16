@@ -7,6 +7,7 @@ function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
     const { login } = useAuth();
 
@@ -23,20 +24,30 @@ function Login() {
         })
         .catch((error) => {
             console.error("Error en el login:", error.code, error.message);
-            alert("Error: " + error.message);
+            //setError("Error: " + error.message); // puede ser peligroso mostrar el error sin tratar?
+            setError('Ocurrió un error al loguearse con el usuario. Verifique los datos e intente nuevamente.');
         });
 
     };
 
     return (
         <>
-            <h2>Iniciar Sesión</h2>
-            <form onSubmit={ handleLogin }>
-                Usuario: <input type="email" placeholder="" value={email} onChange={(e) => setEmail(e.target.value)} /><br />
-                Comtraseña: <input type="password" placeholder="" value={password} onChange={(e) => setPassword(e.target.value)} />
-                <br />
-                <button type="submit">Ingresar</button>
-            </form>
+            <h2 className="text-center">Iniciar Sesión</h2>
+
+            <div className="row justify-content-center  mt-3">
+                <form className="form col-md-6 bg-white border p-3" onSubmit={ handleLogin }>
+                    {error && <div className="error-message mb-3">{error}</div>}
+                    <div className="form-group mb-3">
+                        <label for="producto-unidad" className="form-label">Correo Electrónico:</label>
+                        <input type="email" placeholder="" value={email} onChange={(e) => setEmail(e.target.value)} className="form-control" />
+                    </div>
+                    <div className="form-group mb-3">
+                        <label for="producto-unidad" className="form-label">Contraseña:</label>
+                        <input type="password" placeholder="" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Ingresar</button>
+                </form>
+            </div>
         </>
     );
 };

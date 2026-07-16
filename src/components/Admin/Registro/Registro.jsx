@@ -28,7 +28,7 @@ function Registro() {
         catch (error) {
             
             if (error.code === 'auth/email-already-in-use') {
-                const quiereLoguearse = window.confirm('Este correo electrónico ya está registrado. ¿Desea intentar iniciar sesión?');
+                const quiereLoguearse = window.confirm('Este correo electrónico ya está registrado. ¿Desea iniciar sesión?');
             
                 if (quiereLoguearse) {
                     navigate('/jasiwoodstore/login');
@@ -38,28 +38,31 @@ function Registro() {
                 }
             } 
             else {
-                setError('Ocurrió un error al registrar el usuario. Verifique los datos e intente nuevamente.');
                 console.error("Error en el registro:", error.message);
+                setError('Ocurrió un error al registrar el usuario. Verifique los datos e intente nuevamente.');
             }
         }
     };
 
     return (
-        <div className="auth-container">
-            <h2>Crear una nueva cuenta</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Correo Electrónico</label>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="persona@ejemplo.com" />
-                </div>
-                <div className="form-group">
-                    <label>Contraseña</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Mínimo 6 caracteres" />
-                </div>
-                {error && <p className="error-message">{error}</p>}
-                <button type="submit">Registrarse</button>
-            </form>
-        </div>
+        <>
+            <h2 className="text-center">Crear una nueva cuenta</h2>
+
+            <div className="row justify-content-center mt-3">
+                <form className="form col-md-6 bg-white border p-3" onSubmit={handleSubmit}>
+                    {error && <div className="error-message mb-3">{error}</div>}
+                    <div className="form-group mb-3">
+                        <label for="producto-unidad" className="form-label">Correo Electrónico</label>
+                        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="Ej: persona@ejemplo.com" className="form-control" />
+                    </div>
+                    <div className="form-group mb-3">
+                        <label for="password" className="form-label">Contraseña</label>
+                        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required placeholder="Mínimo 6 caracteres" className="form-control" />
+                    </div>
+                    <button type="submit" className="btn btn-primary">Registrarse</button>
+                </form>
+            </div>
+        </>
     );
 };
 

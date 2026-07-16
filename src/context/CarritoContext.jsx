@@ -17,6 +17,7 @@ export const useCarrito = () => {
 // cerebro, nos provee las funciones para manejar el contexto del carrito
 export const CarritoProvider = ({ children }) => {
     const [carrito, setCarrito] = useState([]);
+    const [cupon, setCupon] = useState(null);
 
     /*
         Aca van las funciones del carrito que vamos a exportar para que los componentes usen:
@@ -82,8 +83,35 @@ export const CarritoProvider = ({ children }) => {
         return carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
     };
 
+    const guardarCupon = (cupon) => {
+        setCupon(cupon);
+    }
+
+    const recuperarCupon = () => {
+        return cupon;
+    }
+
+    const quitarCupon = () => {
+        setCupon(null);
+    }
+
+    const exports = {
+        carrito, 
+        agregarItemCarrito, 
+        quitarItemCarrito, 
+        removerItemsCarrito, 
+        itemEnCarrito, 
+        vaciarCarrito, 
+        cantidadTotalCarrito, 
+        cantidadItemCarrito, 
+        precioTotalCarrito,
+        guardarCupon,
+        recuperarCupon,
+        quitarCupon
+    };
+
     return (
-        <CarritoContext.Provider value={{ carrito, agregarItemCarrito, quitarItemCarrito, removerItemsCarrito, itemEnCarrito, vaciarCarrito, cantidadTotalCarrito, cantidadItemCarrito, precioTotalCarrito }}>
+        <CarritoContext.Provider value={ exports }>
             {children}
         </CarritoContext.Provider>
     );
