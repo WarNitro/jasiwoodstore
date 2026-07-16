@@ -35,7 +35,7 @@ function Producto({ id, nombre, imagen, precio, descripcion, stock, unidad, cate
         <div className="col">
             <div className="card text-center shadow-lg h-100">
                 <Link to={ `/jasiwoodstore/producto-detalle/${ id }` }>
-                    <img src={ imagen } alt={ nombre } className="card-img-top" style={{ height: "200px" }} />
+                    <img src={ imagen=='' ? '/jasiwoodstore/img/sample.jpg' : imagen } alt={ nombre } className="card-img-top" style={{ height: "200px" }} />
                 </Link>
                 <div className="card-body p-3">
                     <h3 className="card-title">{ nombre }</h3>

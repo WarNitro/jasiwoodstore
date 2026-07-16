@@ -73,7 +73,7 @@ function GestionProductos() {
             <div className="card shadow-lg p-0 my-1" key={producto.id}>
                 <div className="row g-0">
                     <div className="col-2">
-                        <img src={ producto.imagen=='' ? '/jasiwoodstore/img/sample.png' : producto.imagen } alt={ producto.nombre } className="img-fluid rounded-start w-100" style={{height: "120px"}} />
+                        <img src={ producto.imagen=='' ? '/jasiwoodstore/img/sample.jpg' : producto.imagen } alt={ producto.nombre } className="img-fluid rounded-start w-100" style={{height: "120px"}} />
                     </div>
                     <div className="col-8 p-2">
                         <h4 className="card-title">{producto.nombre}</h4>

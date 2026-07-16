@@ -49,7 +49,7 @@ function Registro() {
             <h2 className="text-center">Crear una nueva cuenta</h2>
 
             <div className="row justify-content-center mt-3">
-                <form className="form col-md-6 bg-white border p-3" onSubmit={handleSubmit}>
+                <form className="form col-md-6 bg-white border shadow-lg p-3" onSubmit={handleSubmit}>
                     {error && <div className="error-message mb-3">{error}</div>}
                     <div className="form-group mb-3">
                         <label for="producto-unidad" className="form-label">Correo Electrónico</label>

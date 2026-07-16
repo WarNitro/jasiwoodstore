@@ -62,7 +62,7 @@ function ProductoDetalle() {
     return (
         <div className="card shadow-lg p-4">
             <h2>{ producto.nombre }</h2>
-            <img src={ producto.imagen } alt={ producto.nombre } className="card-img-top" />
+            <img src={ producto.imagen=='' ? '/jasiwoodstore/img/sample.jpg' : producto.imagen } alt={ producto.nombre } className="card-img-top" />
             <p>Unidad: { producto.unidad }</p>
             <p>Precio: ${ producto.precio }</p>
             <p>Stock: { producto.stock }</p>

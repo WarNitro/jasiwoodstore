@@ -35,7 +35,7 @@ function Login() {
             <h2 className="text-center">Iniciar Sesión</h2>
 
             <div className="row justify-content-center  mt-3">
-                <form className="form col-md-6 bg-white border p-3" onSubmit={ handleLogin }>
+                <form className="form col-md-6 bg-white border shadow-lg p-3" onSubmit={ handleLogin }>
                     {error && <div className="error-message mb-3">{error}</div>}
                     <div className="form-group mb-3">
                         <label for="producto-unidad" className="form-label">Correo Electrónico:</label>
