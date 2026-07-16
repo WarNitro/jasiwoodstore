@@ -54,20 +54,22 @@ function FormularioProducto() {
         if (name == 'imagenNueva') {
             // trato de subir la imagen
             if (value = await subirImagen(evento.target.files[0])) {
-                // si salio bien actualizo la imagen
-                setProducto({
-                    ...producto, 
-                    'imagen': value
-                });
+                // si salio bien actualizo la imagen original
+                name = 'imagen'
+            }
+            else {
+                alert("No se pudo actualizar la imagen, reintentelo o pruebe con otro archivo.");
+                return;
             }
         }
-        else {
-            // actualizo sin mas
-            setProducto({
-                ...producto, 
-                [name]: value
-            });
-        }        
+        if (name == 'destacado') {
+            value = evento.target.checked;
+        }
+
+        setProducto({
+            ...producto, 
+            [name]: value
+        });     
     };
 
     const subirImagen = async (imagen) => {
@@ -171,7 +173,7 @@ function FormularioProducto() {
                     </div>
                     <div className="mb-3 form-check">
                         <label for="producto-destacado" className="form-check-label">Producto Destacado</label>
-                        <input id="producto-destacado" type="checkbox" name="destacado" defaultChecked={ producto.destacado } onChange={manejarCambio} className="form-check-input" />
+                        <input id="producto-destacado" type="checkbox" name="destacado" checked={ producto.destacado } onChange={manejarCambio} className="form-check-input" />
                     </div>
                     <div className="mb-3">
                         <label for="producto-descripcion" className="form-label">Descripcion:</label>

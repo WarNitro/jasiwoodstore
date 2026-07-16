@@ -77,7 +77,8 @@ function GestionProductos() {
                     </div>
                     <div className="col-8 p-2">
                         <h4 className="card-title">{producto.nombre}</h4>
-                        <span className="card-text">Precio: ${producto.precio} - Unidad: {producto.unidad} - Stock: {producto.stock} - Destacado: {producto.destacado}</span>
+                        <span className="card-text">Precio: ${ producto.precio } - Unidad: { producto.unidad } - Stock: { producto.stock }</span><br />
+                        <span className="card-text">Destacado: { producto.destacado ? 'Si' : 'No' }</span>
                     </div>
                     <div className="col-2 p-2">
                         <button onClick={() => navigate(`/jasiwoodstore/admin/editar-producto/${ producto.id }`)} className="btn btn-primary w-100 m-1">Editar</button>

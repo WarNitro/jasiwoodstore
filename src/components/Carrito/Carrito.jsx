@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { query, collection, where, getDocs} from 'firebase/firestore';
+import { query, collection, where, getDocs, Timestamp} from 'firebase/firestore';
 
 import { db } from '../../firebase/config';
 import { useCarrito } from '../../context/CarritoContext';
@@ -67,7 +67,10 @@ function Carrito() {
 
         const queryCupon = query(
             collection(db, "cupones"),
-            where("codigo", "==", codigoCupon.toUpperCase())
+            where("codigo", "==", codigoCupon.toUpperCase()),
+            where("activo", "==", true),
+            where("desde", "<=", Timestamp.fromDate(new Date())),
+            where("hasta", ">=", Timestamp.fromDate(new Date()))
         );
 
         getDocs(queryCupon)

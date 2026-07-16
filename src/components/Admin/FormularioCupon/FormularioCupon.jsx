@@ -11,7 +11,10 @@ function FormularioCupon() {
 
     const estadoInicialForm = {
         codigo: '',
-        descuento: 0
+        descuento: 0,
+        activo: false,
+        desde: null,
+        hasta: null
     };
 
     const [cupon, setCupon] = useState(estadoInicialForm);
@@ -23,7 +26,17 @@ function FormularioCupon() {
             getDoc(doc(db, "cupones", id))
             .then((respuesta) => {
                 if (respuesta.exists()) {
-                    setCupon({ ...respuesta.data(), id: respuesta.id });
+                    console.log("Cupon encontrado", respuesta.data());
+
+                    setCupon({
+                        // lo tengo q hacer manual
+                        id: respuesta.id,
+                        codigo: respuesta.data().codigo, 
+                        descuento: respuesta.data().descuento, 
+                        desde: respuesta.data().desde.toDate().toISOString().slice(0, 16), 
+                        hasta: respuesta.data().hasta.toDate().toISOString().slice(0, 16), 
+                        activo: respuesta.data().activo, 
+                    });
                 }
                 else {
                     setError("No se encontró el cupon");
@@ -41,7 +54,10 @@ function FormularioCupon() {
     const manejarCambio = async (evento) => {
         evento.preventDefault();
 
-        const { name, value } = evento.target;
+        let { name, value } = evento.target;
+        if (name == 'activo') {
+            value = evento.target.checked;
+        }
         setCupon({
             ...cupon, 
             [name]: value
@@ -51,7 +67,7 @@ function FormularioCupon() {
     const manejarEnvio = async (evento) => {
         evento.preventDefault();
 
-        if (!cupon.codigo || !cupon.descuento) {
+        if (!cupon.codigo) {
             alert("Faltan campos obligatorios");
             return;
         }
@@ -65,7 +81,10 @@ function FormularioCupon() {
                 // update
                 const docRef = doc(db, "cupones", cupon.id);
                 await updateDoc(docRef, {
-                    ...cupon,
+                    // lo tengo q hacer manual, no le dejo el id
+                    codigo: cupon.codigo,
+                    descuento: Number(cupon.descuento),
+                    activo: Boolean(cupon.activo),
                     descuento: Number(cupon.descuento),
                     desde: Timestamp.fromDate(new Date(cupon.desde)),
                     hasta: Timestamp.fromDate(new Date(cupon.hasta))
@@ -76,8 +95,10 @@ function FormularioCupon() {
                 // create
                 const cuponesCollection = collection(db, "cupones");
                 await addDoc(cuponesCollection, {
-                    ...cupon,
+                    // lo tengo q hacer manual, no le dejo el id
+                    codigo: cupon.codigo,
                     descuento: Number(cupon.descuento),
+                    activo: Boolean(cupon.activo),
                     desde: cupon.desde ? Timestamp.fromDate(new Date(cupon.desde)) : null,
                     hasta: cupon.hasta ? Timestamp.fromDate(new Date(cupon.hasta)) : null
             });
@@ -103,20 +124,24 @@ function FormularioCupon() {
             <div className="row justify-content-center mt-3">
                 <form className="form col-md-6 bg-white border p-3" onSubmit={ manejarEnvio }>
                     <div className="mb-3">
-                        <label for="cupon-codigo" className="form-label">Código del Cupon*:</label>
+                        <label for="cupon-codigo" className="form-label">Código del Cupon*</label>
                         <input id="cupon-codigo" type="text" name="codigo" value={cupon.codigo} onChange={manejarCambio} required className="form-control" />
                     </div>
                     <div className="mb-3">
-                        <label for="cupon-descuento" className="form-label">% Descuento*:</label>
+                        <label for="cupon-descuento" className="form-label">% Descuento*</label>
                         <input id="cupon-descuento" type="number" min="0" max="100" placeholder="50" name="descuento" value={cupon.descuento} onChange={manejarCambio} required className="form-control" />
                     </div>
                     <div className="mb-3">
-                        <label for="cupon-desde" className="form-label">Validez desde:</label>
-                        <input id="cupon-desde" type="datetime-local" name="desde" value={cupon.desde} onChange={manejarCambio} className="form-control" />
+                        <label for="cupon-desde" className="form-label">Validez desde</label>
+                        <input id="cupon-desde" type="datetime-local" name="desde" value={ cupon.desde } onChange={manejarCambio} className="form-control" />
                     </div>
                     <div className="mb-3">
-                        <label for="cupon-hasta" className="form-label">Validez hasta:</label>
-                        <input id="cupon-hasta" type="datetime-local" name="hasta" value={cupon.hasta} onChange={manejarCambio} className="form-control" />
+                        <label for="cupon-hasta" className="form-label">Validez hasta</label>
+                        <input id="cupon-hasta" type="datetime-local" name="hasta" value={ cupon.hasta } onChange={manejarCambio} className="form-control" />
+                    </div>
+                    <div className="mb-3 form-check">
+                        <label for="cupon-activo" className="form-check-label">Activo</label>
+                        <input id="cupon-activo" type="checkbox" name="activo" checked={ cupon.activo } onChange={manejarCambio} className="form-check-input" />
                     </div>
                     {cupon.id && (<input type="hidden" name="id" value={cupon.id} />)}
                     <button type="submit" className="btn btn-primary">Guardar Cupon</button>

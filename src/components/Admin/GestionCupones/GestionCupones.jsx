@@ -73,7 +73,7 @@ function GestionCupones() {
                 <div className="row g-0">
                     <div className="col-10 p-2">
                         <h4 className="card-title">{cupon.codigo}</h4>
-                        <span className="card-text">Descuento: {cupon.descuento}%</span><br />
+                         <span className="card-text">Activo: { cupon.activo ? 'Si' : 'No' } - Descuento: { cupon.descuento }%</span><br />
                     {(cupon.desde || cupon.hasta) && (
                         <span className="card-text">Validez </span>
                     )}
